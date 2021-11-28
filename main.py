@@ -30,7 +30,7 @@ if __name__ == "__main__":
                 action = int(input("Podaj proszę działanie wybierając odpowiednią liczbę:\n[1] - dodawanie\n[2] - odejmowanie\n[3] - mnożenie\n[4] - dzielenie\n[5] - potęgowanie\nTwój wybrór to: "))
                 break
             except ValueError:
-                logging.warning("To nie jest liczba. Spróbuj ponownie\n")
+                logging.warning(f"To nie jest liczba. Spróbuj ponownie\n")
         if action > 5:
             con = input("Wybrano niewłaściwą liczbę. Chcesz spróbować ponownie? ([T] - tak, [N] - nie): \n")
             if con == "T" or con == "t":
@@ -44,23 +44,28 @@ if __name__ == "__main__":
                     liczby_int = [int(x) for x in liczby.split(",")]
                     break
                 except ValueError:
-                    logging.warning("Spróbuj podać poprawne liczby\n")
+                    logging.warning(f"Spróbuj podać poprawne liczby\n")
             if action == 1:
-                print(f"Wynik to {add(liczby_int)}")
+                logging.info(f"Wynik to {add(liczby_int)}")
             elif action == 3:
-                print(f"Wynik to {mul(liczby_int)}")
+                logging.info(f"Wynik to {mul(liczby_int)}")
         elif action == 2 or action == 4 or action == 5:
             while True:
                 try:
                     liczba1 = int(input("Podaj pierwszą liczbę: "))
+                    break
+                except ValueError:
+                    logging.warning(f"To nie jest liczba. Spróbuj ponownie\n")
+            while True:
+                try:
                     liczba2 = int(input("Podaj drugą liczbę: "))
                     break
                 except ValueError:
-                    logging.warning("To nie jest liczba. Spróbuj ponownie\n")
+                    logging.warning(f"To nie jest liczba. Spróbuj ponownie\n")
             if action == 2:
-                print(f"Wynik to {sub(liczba1,liczba2)}")
+                logging.info(f"Wynik to {sub(liczba1,liczba2)}")
             elif action == 4:
-                print(f"Wynik to {div(liczba1,liczba2)}")
+                logging.info(f"Wynik to {div(liczba1,liczba2)}")
             elif action == 5:
-                print(f"Wynik to {exp(liczba1,liczba2)}")
+                logging.info(f"Wynik to {exp(liczba1,liczba2)}")
         con = input("\nCzy chcesz kontunuować? ([T] - tak, [N] - nie): ")
