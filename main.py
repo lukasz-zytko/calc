@@ -1,38 +1,66 @@
 import sys
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(message)s', encoding="UTF-8")
 
-def calc(a,b,c):
-    """
-    Returns the result of an operation based on the arguments entered by the user
-    Arguments:
-    operation mark (int)
-    number 1 (int)
-    number 2 (int)
-    """
-    if a == 1:
-        logging.debug(f"Dodaję {b} do {c}")
-        print(f"Wynik to: {b+c}")
-    elif a == 2:
-        logging.debug(f"Odejmuję {c} od {b}")
-        print(f"Wynik to: {b-c}")
-    elif a == 3:
-        logging.debug(f"Mnożę {b} i {c}")
-        print(f"Wynik to: {b*c}")
-    elif a == 4:
-        logging.debug(f"Dzięlę {b} przez {c}")
-        print(f"Wynik to: {b/c}")     
+def add(a):
+    logging.debug(f"Dodaję argumenty: {a}")
+    return sum(a)
+def sub(a,b):
+    logging.debug(f"Odejmuję {b} od {a}")
+    return a - b
+def mul(a):
+    logging.debug(f"Mnożę argumenty: {a}")
+    mult = 1
+    for i in a:
+        mult *= i
+    return mult
+def div(a,b):
+    logging.debug(f"Dzięlę {a} przez {b}")
+    return a / b
+def exp(a,b):
+    logging.debug(f"Podnoszę {a} do potegi {b}")
+    return a ** b
 
 if __name__ == "__main__":
-    print("Witaj w kalkulatorze! \nZa chwilę poprosze Cię o podanie paramerów obliczeń. Powodzenia!")
-    action = int(input("Podaj proszę działanie posługując się odpowiednią liczbą:\n[1] - dodawanie\n[2] - odejmowanie\n[3] - mnożenie\n[4] - dzielenie\nTwój wybrót to: "))
-    if action > 4:
-        logging.warning("Nie ma takiego działania, wybrano złą liczbę")
-        exit(1)
-    liczby = input("Teraz podaj dwie liczby, które chcesz poddać działaniu (oddziel liczby przecinkiem): ")
-    liczby = liczby.split(',')
-    num1 = int(liczby[0])
-    num2 = int(liczby[1])
-    logging.debug(f"Wybrane zostały następujęce liczby: {num1} i {num2}")
-
-calc(action,num1,num2)
+    print("Witaj w kalkulatorze! \nZa chwilę poprosze Cię o podanie paramerów obliczeń. Powodzenia ;)")
+    con = "T"
+    while con == "T" or con == "t":
+        while True:
+            try:
+                action = int(input("Podaj proszę działanie wybierając odpowiednią liczbę:\n[1] - dodawanie\n[2] - odejmowanie\n[3] - mnożenie\n[4] - dzielenie\n[5] - potęgowanie\nTwój wybrór to: "))
+                break
+            except ValueError:
+                logging.warning("To nie jest liczba. Spróbuj ponownie\n")
+        if action > 5:
+            con = input("Wybrano niewłaściwą liczbę. Chcesz spróbować ponownie? ([T] - tak, [N] - nie): \n")
+            if con == "T" or con == "t":
+                continue
+            else:
+                break
+        if action == 1 or action == 3:  
+            while True:
+                try:
+                    liczby = input("Teraz podaj liczby, które chcesz poddać działaniu (oddziel liczby przecinkiem): ")
+                    liczby_int = [int(x) for x in liczby.split(",")]
+                    break
+                except ValueError:
+                    logging.warning("Spróbuj podać poprawne liczby\n")
+            if action == 1:
+                print(f"Wynik to {add(liczby_int)}")
+            elif action == 3:
+                print(f"Wynik to {mul(liczby_int)}")
+        elif action == 2 or action == 4 or action == 5:
+            while True:
+                try:
+                    liczba1 = int(input("Podaj pierwszą liczbę: "))
+                    liczba2 = int(input("Podaj drugą liczbę: "))
+                    break
+                except ValueError:
+                    logging.warning("To nie jest liczba. Spróbuj ponownie\n")
+            if action == 2:
+                print(f"Wynik to {sub(liczba1,liczba2)}")
+            elif action == 4:
+                print(f"Wynik to {div(liczba1,liczba2)}")
+            elif action == 5:
+                print(f"Wynik to {exp(liczba1,liczba2)}")
+        con = input("\nCzy chcesz kontunuować? ([T] - tak, [N] - nie): ")
