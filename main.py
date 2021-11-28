@@ -29,10 +29,10 @@ if __name__ == "__main__":
     if action > 4:
         logging.warning("Nie ma takiego działania, wybrano złą liczbę")
         exit(1)
-    numbers = input("Teraz podaj dwie liczby, które chcesz poddać działaniu (oddziel liczby przecinkiem): ")
-    liczby = numbers.split(',')
-    liczba1 = int(liczby[0])
-    liczba2 = int(liczby[1])
-    logging.debug(f"Wybrane zostały następujęce liczby: {liczba1} i {liczba2}")
+    liczby = input("Teraz podaj dwie liczby, które chcesz poddać działaniu (oddziel liczby przecinkiem): ")
+    liczby = liczby.split(',')
+    num1 = int(liczby[0])
+    num2 = int(liczby[1])
+    logging.debug(f"Wybrane zostały następujęce liczby: {num1} i {num2}")
 
-calc(action,liczba1,liczba2)
+calc(action,num1,num2)
