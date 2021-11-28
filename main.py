@@ -1,6 +1,6 @@
 import sys
 import logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
 def calc(a,b,c):
     """
@@ -12,18 +12,18 @@ def calc(a,b,c):
     """
     if a == 1:
         logging.debug(f"Dodaję {b} do {c}")
-        print(f"Wynik dodawania to: {b+c}")
+        print(f"Wynik to: {b+c}")
     elif a == 2:
         logging.debug(f"Odejmuję {c} od {b}")
-        print(f"Wynik odejmowania to: {b-c}")
+        print(f"Wynik to: {b-c}")
     elif a == 3:
         logging.debug(f"Mnożę {b} i {c}")
-        print(f"Wynik mnożenia to: {b*c}")
+        print(f"Wynik to: {b*c}")
     elif a == 4:
         logging.debug(f"Dzięlę {b} przez {c}")
-        print(f"Wynik dzielenia to: {b/c}")
+        print(f"Wynik to: {b/c}")
     else:
-        logging.warning("Nie ma takiego działania")
+        logging.warning("Nie ma takiego działania, wybrano złą liczbę")
 
 if __name__ == "__main__":
     print("Witaj w kalkulatorze! \nZa chwilę poprosze Cię o podanie paramerów obliczeń. Powodzenia!")
@@ -33,6 +33,6 @@ if __name__ == "__main__":
     liczby = numbers.split(',')
     liczba1 = int(liczby[0])
     liczba2 = int(liczby[1])
-    logging.debug(f"Wybrane zostały następujęce liczby: ***{liczba1}*** i ***{liczba2}***")
+    logging.debug(f"Wybrane zostały następujęce liczby: {liczba1} i {liczba2}")
 
 calc(action,liczba1,liczba2)
