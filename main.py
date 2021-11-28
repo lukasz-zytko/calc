@@ -16,7 +16,7 @@ def mul(a):
     return mult
 def div(a,b):
     if b == 0:
-        return("Nie można dzielic przez 0 :)")
+        return("Nie można dzielic przez 0")
     logging.debug(f"Dzięlę {a} przez {b}")
     return a / b
 def exp(a,b):
