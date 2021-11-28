@@ -21,14 +21,14 @@ def calc(a,b,c):
         print(f"Wynik to: {b*c}")
     elif a == 4:
         logging.debug(f"Dzięlę {b} przez {c}")
-        print(f"Wynik to: {b/c}")
-    else:
-        logging.warning("Nie ma takiego działania, wybrano złą liczbę")
+        print(f"Wynik to: {b/c}")     
 
 if __name__ == "__main__":
     print("Witaj w kalkulatorze! \nZa chwilę poprosze Cię o podanie paramerów obliczeń. Powodzenia!")
     action = int(input("Podaj proszę działanie posługując się odpowiednią liczbą:\n[1] - dodawanie\n[2] - odejmowanie\n[3] - mnożenie\n[4] - dzielenie\nTwój wybrót to: "))
-    logging.debug(f"Wybrane zostało działanie nr: {action}")
+    if action > 4:
+        logging.warning("Nie ma takiego działania, wybrano złą liczbę")
+        exit(1)
     numbers = input("Teraz podaj dwie liczby, które chcesz poddać działaniu (oddziel liczby przecinkiem): ")
     liczby = numbers.split(',')
     liczba1 = int(liczby[0])
