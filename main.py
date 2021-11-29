@@ -85,6 +85,5 @@ if __name__ == "__main__":
                     break
                 except (ValueError, ZeroDivisionError):
                     logging.warning("Niewłaściwa liczba lub 0. Spróbuj jeszcze raz")
-
         logging.info(f"Wynik: {calc(action,input1,input2)}")
         con = input("Kontynuować? [T] - tak, [N] - nie: ")
