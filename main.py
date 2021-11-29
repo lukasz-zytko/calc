@@ -41,13 +41,13 @@ if __name__ == "__main__":
             logging.warning("Niewłaściwy wybór")
             con = input("Chcesz spróbowac jeszcze raz? [T] - tak, [N] - nie: ")
             continue
+        while True:
+            try:
+                input1 = float(input("Podaj pierwszą liczbę: "))
+                break
+            except ValueError:
+                logging.warning("Niewłaściwa liczna. Spróbuj jeszcze raz")
         if action == 1 or action == 3:
-            while True:
-                try:
-                    input1 = float(input("Podaj pierwszą liczbę: "))
-                    break
-                except ValueError:
-                    logging.warning("Niewłaściwa liczna. Spróbuj jeszcze raz")
             while True:
                 try:
                     input2 = float(input("Podaj drugą liczbę: "))
@@ -70,28 +70,21 @@ if __name__ == "__main__":
                     count = input("Czy chcesz dodać kolejną liczbę? [T] lub [N]")
             else:
                 pass
-        elif action == 2 or action == 4:
+        if action == 2:
             while True:
                 try:
-                    input1 = float(input("Podaj pierwszą liczbę: "))
+                    input2 = float(input("Podaj drugą liczbę: "))
                     break
                 except ValueError:
-                    logging.warning("Niewłaściwa liczna. Spróbuj jeszcze raz")
-            if action == 2:
-                while True:
-                    try:
-                        input2 = float(input("Podaj drugą liczbę: "))
-                        break
-                    except ValueError:
-                        logging.warning("Niewłaściwa liczba. Spróbuj jeszcze raz")
-            elif action == 4:
-                while True:
-                    try:
-                        input2 = float(input("Podaj drugą liczbę: "))
-                        input1 / input2
-                        break
-                    except (ValueError, ZeroDivisionError):
-                        logging.warning("Niewłaściwa liczba lub 0. Spróbuj jeszcze raz")
+                    logging.warning("Niewłaściwa liczba. Spróbuj jeszcze raz")
+        elif action == 4:
+            while True:
+                try:
+                    input2 = float(input("Podaj drugą liczbę: "))
+                    input1 / input2
+                    break
+                except (ValueError, ZeroDivisionError):
+                    logging.warning("Niewłaściwa liczba lub 0. Spróbuj jeszcze raz")
 
         logging.info(f"Wynik: {calc(action,input1,input2)}")
         con = input("Kontynuować? [T] - tak, [N] - nie: ")
