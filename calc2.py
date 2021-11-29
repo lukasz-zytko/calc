@@ -4,17 +4,33 @@ logging.basicConfig(level=logging.DEBUG, format='%(message)s', encoding="UTF-8")
 def calc(a,b,c):
     if a == 1:
         logging.debug(f"Dodaję {b} do {c}")
-        return b+c
+        if type(c) == list:
+            c.append(b)
+            return sum(c)
+        else:
+            return b+c
     elif a == 2:
         logging.debug(f"Odejmuję {c} od {b}")
         return b-c
-    elif a == 3:
-        logging.debug(f"Mnożę {b} i {c}")
-        return b*c
+    elif a == 3:       
+        if type(c) == list:
+            c.append(b)
+            multi = 1
+            print(c)
+            for i in c:
+                multi *= i
+            logging.debug(f"Mnożę elementy: {c}")
+            return multi
+        else:
+            logging.debug(f"Mnożę {b} i {c}")
+            return b*c
     elif a == 4:
         logging.debug(f"Dzięlę {b} prze {c}")
         return b/c
 
+print(calc(3,2,[3,4]))
+
+"""
 print("***Kalkulator***")
 con = "t"
 while con == "t" or con == "T":
@@ -42,3 +58,4 @@ while con == "t" or con == "T":
             logging.warning("Niewłaściwa liczba. Spróbuj jeszcze raz")
     logging.info(f"Wynik: {calc(action,liczba1,liczba2)}")
     con = input("Kontynuować? [T] - tak, [N] - nie: ")
+"""
