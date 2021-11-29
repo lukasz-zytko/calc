@@ -30,7 +30,7 @@ def calc(choice,num1,num2):
 if __name__ == "__main__":
     print("***Kalkulator***")
     con = "t"
-    while con == "t" or con == "T":
+    while con in ["t", "T"]:
         while True:
             try:
                 action = int(input("Wybierz działanie:\n [1] - dodawanie\n [2] - odejmowanie\n [3] - mnożenie\n [4] - dzielenie\nTwój wybór: "))
@@ -55,10 +55,10 @@ if __name__ == "__main__":
                 except ValueError:
                     logging.warning("Niewłaściwa liczba. Spróbuj jeszcze raz")
             count = input("Czy chcesz dodać kolejną liczbę? [T] lub [N]")
-            if count == "T" or count == "t":
+            if count.lower() == "t":
                 input2 = list([input2])
                 i = 3
-                while count == "T" or count == "t":
+                while count.lower() == "t":
                     while True:
                         try:
                             add_input = float(input(f"Podaj liczbę nr {i}: "))
