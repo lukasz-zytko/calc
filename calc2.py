@@ -18,8 +18,27 @@ def calc(a,b,c,*arg):
 print("***Kalkulator***")
 con = "t"
 while con == "t" or con == "T":
-    action = int(input("Wybierz działanie:\n [1] - dodawanie\n [2] - odejmowanie\n [3] - mnożenie\n [4] - dzielenie\nTwój wybór: "))
-    liczba1 = float(input("Podaj pierwszą liczbę: "))
-    liczba2 = float(input("Podaj drugą liczbę: "))
+    while True:
+        try:
+            action = int(input("Wybierz działanie:\n [1] - dodawanie\n [2] - odejmowanie\n [3] - mnożenie\n [4] - dzielenie\nTwój wybór: "))
+            break
+        except ValueError:
+            logging.warning("Podaj wlaściwą liczbę")
+    if action > 4:
+        logging.warning("Niewłaściwy wybór")
+        con = input("Chcesz spróbowac jeszcze raz? [T] - tak, [N] - nie: ")
+        continue
+    while True:
+        try:
+            liczba1 = float(input("Podaj pierwszą liczbę: "))
+            break
+        except ValueError:
+            logging.warning("Niewłaściwa liczna. Spróbuj jeszcze raz")
+    while True:
+        try:
+            liczba2 = float(input("Podaj drugą liczbę: "))
+            break
+        except ValueError:
+            logging.warning("Niewłaściwa liczba. Spróbuj jeszcze raz")
     logging.info(f"Wynik: {calc(action,liczba1,liczba2)}")
     con = input("Kontynuować? [T] - tak, [N] - nie: ")
