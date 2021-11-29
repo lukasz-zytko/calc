@@ -1,7 +1,7 @@
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(message)s', encoding="UTF-8")
 
-def calc(a,b,c,*arg):
+def calc(a,b,c):
     if a == 1:
         logging.debug(f"Dodaję {b} do {c}")
         return b+c
